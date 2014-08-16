@@ -1,0 +1,129 @@
+#table_action_header
+{
+    position:relative;
+    width:100%;
+    background-color:#EEEEEE;
+    background-image:url(../images/checkbox_arrow.gif);
+    height:20px;
+    border-top:1px solid #CCCCCC;	
+    background-position:5px 10px;
+    background-repeat:no-repeat;	
+    padding:5px 0px;
+}
+
+#table_action_header ul
+{
+    list-style:none;
+    padding:0px;
+    margin:0px;
+    margin-left:15px;
+}
+
+#table_action_header ul li
+{
+    margin:3px 4px 0 8px ;
+}
+
+#table_action_header ul li span
+{
+    background: #fff;
+    font-size:11px;
+    padding:3px 5px 2px 5px;
+    color: #fff;
+    border: 1px solid #eee;
+
+}
+
+#table_action_header a
+{
+    text-decoration:none;
+    color:#666;	
+}
+
+#table_holder
+{
+    position:relative;
+    margin-bottom:50px;
+}
+
+table.tablesorter 
+{
+    position:relative;
+    width:100%;
+    border-top:3px solid #0a6184;
+    border-collapse:collapse;
+}
+
+table.tablesorter thead tr th, table.tablesorter tfoot tr th 
+{
+    color:#555;
+    text-align:left;
+    background-color:#ccc;
+    padding: 5px;
+}
+
+table.tablesorter thead tr .header 
+{
+    background-image: url(../images/tables/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+
+table.tablesorter tbody td 
+{
+    color: #3D3D3D;
+    background-color: #FFF;
+    vertical-align: top;
+    padding: 0px 5px 0px 5px;
+
+}
+
+table.tablesorter tbody td 
+{
+    border-bottom:1px solid #DDDDDD;
+    padding: 5px;
+}
+table.tablesorter tbody td .warning_message{
+    margin: -5px;
+}
+table.tablesorter tbody td.over
+{
+    background-color:#eee;
+}
+
+table.tablesorter tbody td.selected
+{
+    background-color:#BBBBBB;
+}
+
+table.tablesorter thead tr .headerSortUp 
+{
+    background-image: url(../images/tables/asc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown 
+{
+    background-image: url(../images/tables/desc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp 
+{
+    background-color: rgba(0,0,0,0.2);
+}
+
+table.innertable
+{
+    display: none;
+}
+
+table.innertable thead tr th 
+{
+    background-color: #0a6184;
+    color: #fff;
+}
+
+table.innertable tbody tr td 
+{
+    background-color: #DDD;
+}

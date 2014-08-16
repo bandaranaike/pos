@@ -1,0 +1,81 @@
+#menubar
+{
+    position:relative;
+    margin:0px;
+    padding:0px;
+    background: #ddd;
+    width:100%;
+    color:#555;
+    text-align:left;
+    text-align:center;
+}
+
+#menubar_container
+{
+    margin:0 auto;
+    /*    width:875px;*/
+    text-align:left;
+    padding: 10px;
+    overflow: auto;
+}
+
+.menu_item
+{
+    float:left;
+    text-align:center;
+    border-right: solid #fff 1px;
+    padding: 0 10px;
+    height: 19px;
+    margin: -10px 0;
+    padding: 20px 10px;
+}
+
+
+#menubar a:link, #menubar a:visited, #menubar a
+{
+    color:#666;
+    text-decoration:none;
+}
+
+#menubar a:hover
+{
+    color:#777;
+    text-decoration:none;	
+}
+.menu_item a img{
+    display: none;
+}
+#menubar_company_info
+{
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+#company_title
+{
+    font-size:11pt;
+    font-weight:bold;
+    display: block;
+}
+
+#menubar_navigation
+{
+    margin: 0;
+    float: left;
+}
+#menubar_navigation .menu_item:first-child{
+    border-left: 1px solid #fff;
+}
+#menubar_footer
+{
+    font-size:8pt;
+    float: right;
+    padding:12px 10px;
+    margin: -10px 0;
+    border-left: 1px solid #fff;
+}
+
+#menubar_date
+{
+    margin-top: 3px;
+}
