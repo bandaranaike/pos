@@ -1,6 +1,6 @@
 <?php $this->load->view("partial/header"); ?>
 <div id="edit_sale_wrapper">
-	<h1><?php echo $this->lang->line('sales_edit_sale'); ?> POS <?php echo $sale_info['sale_id']; ?></h1>
+	<h1><?php echo $this->lang->line('sales_edit_sale'); echo $sale_info['sale_id']; ?></h1>
 	
 	<?php echo form_open("sales/save/".$sale_info['sale_id'],array('id'=>'sales_edit_form')); ?>
 	<ul id="error_message_box"></ul>
@@ -8,7 +8,7 @@
 	<div class="field_row clearfix">
 	<?php echo form_label($this->lang->line('sales_receipt').':', 'customer'); ?>
 		<div class='form_field'>
-			<?php echo anchor('sales/receipt/'.$sale_info['sale_id'], 'POS '.$sale_info['sale_id'], array('target' => '_blank'));?>
+			<?php echo anchor('sales/receipt/'.$sale_info['sale_id'], $sale_info['sale_id'], array('target' => '_blank'));?>
 		</div>
 	</div>
 	

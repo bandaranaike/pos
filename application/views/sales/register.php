@@ -248,6 +248,14 @@ if (count($cart) > 0) {
                         <?php echo form_input(array('name' => 'amount_tendered', 'id' => 'amount_tendered', 'value' => to_currency_no_money($amount_due), 'size' => '10')); ?>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <span id="amount_commition_label">Commission</span>
+                    </td>
+                    <td>
+                        <?php echo form_input(array('name' => 'commission', 'id' => 'commission', 'value' => 0, 'size' => '10')); ?>
+                    </td>
+                </tr>
             </table>
             <div class='small_button' id='add_payment_button' style='float:left;margin-top:5px;'>
                 <span><?php echo $this->lang->line('sales_add_payment'); ?></span>

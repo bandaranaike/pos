@@ -97,7 +97,7 @@ class Sale extends CI_Model
 			//Ramel Inventory Tracking
 			//Inventory Count Details
 			$qty_buy = -$item['quantity'];
-			$sale_remarks ='POS '.$sale_id;
+			$sale_remarks = $sale_id;
 			$inv_data = array
 			(
 				'trans_date'=>date('Y-m-d H:i:s'),

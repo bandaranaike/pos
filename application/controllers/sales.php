@@ -12,7 +12,7 @@ class Sales extends Secure_area {
     function index() {
         $this->_reload();
     }
- 
+
     function item_search() {
         $suggestions = $this->Item->get_item_search_suggestions($this->input->post('q'), $this->input->post('limit'));
         $suggestions = array_merge($suggestions, $this->Item_kit->get_item_kit_search_suggestions($this->input->post('q'), $this->input->post('limit')));
@@ -344,8 +344,8 @@ class Sales extends Secure_area {
         }
 
         //SAVE sale to database
-        $data['sale_id'] = 'POS ' . $this->Sale_suspended->save($data['cart'], $customer_id, $employee_id, $comment, $data['payments']);
-        if ($data['sale_id'] == 'POS -1') {
+        $data['sale_id'] = $this->Sale_suspended->save($data['cart'], $customer_id, $employee_id, $comment, $data['payments']);
+        if ($data['sale_id'] == '-1') {
             $data['error_message'] = $this->lang->line('sales_transaction_failed');
         }
         $this->sale_lib->clear_all();
