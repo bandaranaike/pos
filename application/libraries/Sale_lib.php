@@ -40,6 +40,30 @@ class Sale_lib {
         $this->CI->session->set_userdata('comment', $comment);
     }
 
+    function set_commission($commission) {
+        $this->CI->session->set_userdata('commission', $commission);
+    }
+
+    function get_check_due_date() {
+        return $this->CI->session->userdata('check_due_date');
+    }
+
+    function clear_check_due_date() {
+        $this->CI->session->unset_userdata('check_due_date');
+    }
+
+    function set_check_due_date($check_due_date) {
+        $this->CI->session->set_userdata('check_due_date', $check_due_date);
+    }
+
+    function get_commission() {
+        return $this->CI->session->userdata('commission');
+    }
+
+    function clear_commission() {
+        $this->CI->session->unset_userdata('commission');
+    }
+
     function clear_comment() {
         $this->CI->session->unset_userdata('comment');
     }
@@ -340,6 +364,7 @@ class Sale_lib {
         }
         $this->set_customer($this->CI->Sale_suspended->get_customer($sale_id)->person_id);
         $this->set_comment($this->CI->Sale_suspended->get_comment($sale_id));
+        $this->set_commission($this->CI->Sale_suspended->get_commission($sale_id));
     }
 
     function delete_item($line) {
@@ -364,6 +389,8 @@ class Sale_lib {
         $this->clear_mode();
         $this->empty_cart();
         $this->clear_comment();
+        $this->clear_commission();
+        $this->clear_check_due_date();
         $this->clear_email_receipt();
         $this->empty_payments();
         $this->remove_customer();

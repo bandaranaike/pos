@@ -11,7 +11,7 @@ if (isset($error_message)) {
         <div id="company_address"><?php echo nl2br($this->config->item('address')); ?></div>
         <div id="company_phone"><?php echo $this->config->item('phone'); ?></div>
         <div id="company_phone"><?php echo $this->config->item('email'); ?></div>
-        <div id="sale_receipt">Invoice</div>
+        <div id="sale_receipt">INVOICE</div>
         <table id="sale_detals" border="1">
             <tbody>
                 <tr>
@@ -20,9 +20,9 @@ if (isset($error_message)) {
                     <td>Salesman</td>
                 </tr>
                 <tr>
-                    <td><?php echo $transaction_time ?></td>
+                    <td><?php echo substr($transaction_time,0,10); ?></td>
                     <td><?php echo $sale_id; ?></td>
-                    <td><?php echo $employee; ?></td>
+                    <td><?php echo explode(" ",$employee)[0]; ?></td>
                 </tr>
             </tbody>
         </table>
@@ -41,9 +41,9 @@ if (isset($error_message)) {
     <div id="receipt_items_wrapper">
         <table id="receipt_items" border="1">
             <tr>
-                <th style="width:25%;">QTY</th>
-                <th style="width:25%;">ITEM CODE</th>
-                <th style="width:17%;">DESCRIPTION</th>
+                <th style="width:15%;">QTY</th>
+                <th style="width:15%;">ITEM CODE</th>
+                <th style="width:37%;">DESCRIPTION</th>
                 <th style="width:16%;text-align:center;">UNIT PRICE</th>
                 <th style="width:16%;text-align:center;">AMOUNT</th>
             </tr>

@@ -1,33 +1,55 @@
 <?php
-echo form_open('suppliers/save/' . $person_info->person_id, array('id' => 'supplier_form'));
+echo form_open('cheques/save_cheque', array('id' => 'cheque_new_form'));
 ?>
 <div id="required_fields_message"><?php echo $this->lang->line('common_fields_required_message'); ?></div>
 <ul id="error_message_box"></ul>
 <fieldset id="supplier_basic_info">
-    <legend><?php echo $this->lang->line("suppliers_basic_information"); ?></legend>
+    <legend>Banking Details</legend>
 
-    <div class="field_row clearfix">	
-        <?php echo form_label($this->lang->line('suppliers_company_name') . ':', 'company_name', array('class' => 'required')); ?>
+    <div class="field_row clearfix">
+        <?php echo form_label('Banking Date:', 'banking_date_lable', array('class' => 'required')); ?>
         <div class='form_field'>
             <?php
             echo form_input(array(
-                'name' => 'company_name',
-                'id' => 'company_name_input',
-                'value' => $person_info->company_name)
+                'name' => 'banking_date',
+                'id' => 'banking_date',
+                'value'=>$cheque->banking_date)
             );
             ?>
         </div>
     </div>
-
-        <?php $this->load->view("people/form_basic_info"); ?>
     <div class="field_row clearfix">	
-            <?php echo form_label($this->lang->line('suppliers_account_number') . ':', 'account_number'); ?>
+        <?php echo form_label('Bank Name:', 'bank_name_lable'); ?>
         <div class='form_field'>
             <?php
             echo form_input(array(
-                'name' => 'account_number',
-                'id' => 'account_number',
-                'value' => $person_info->account_number)
+                'name' => 'bank_name',
+                'id' => 'bank_name',
+                'value'=>$cheque->bank)
+            );
+            ?>
+        </div>
+    </div>
+    <div class="field_row clearfix">	
+        <?php echo form_label('Cheque amount:', 'cheque_amount_lable', array('class' => 'required')); ?>
+        <div class='form_field'>
+            <?php
+            echo form_input(array(
+                'name' => 'cheque_amount',
+                'id' => 'cheque_amount',
+                'value'=>$cheque->cheque_amount)
+            );
+            ?>
+        </div>
+    </div>
+    <div class="field_row clearfix">	
+        <?php echo form_label('Cheque number:', 'cheque_number_lable', array('class' => 'required')); ?>
+        <div class='form_field'>
+            <?php
+            echo form_input(array(
+                'name' => 'cheque_number',
+                'id' => 'cheque_number',
+                'value'=>$cheque->check_number)
             );
             ?>
         </div>

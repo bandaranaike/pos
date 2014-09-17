@@ -4,6 +4,7 @@
     width:1000px;
     overflow: auto;
     margin: 30px 0 0;
+    font-size: 2em;
 }
 #receipt_header
 {
@@ -44,7 +45,7 @@
     border-collapse: collapse;
 }
 #receipt_items_wrapper{
-    min-height: 700px;
+    min-height: 800px;
 }
 #receipt_items {
     border-collapse: collapse;
@@ -58,6 +59,8 @@
     float: left;
     border-collapse: collapse;
     border: 1px solid;
+    min-width: 330px;
+    text-align: left;
 }
 #receipt_items td
 {
@@ -85,4 +88,7 @@
 }
 #receipt_wrapper td, th{
     padding: 5px;
+}
+#check_due_date_container{
+    display: none;
 }

@@ -148,6 +148,5 @@ a.dp-choose-date.dp-disabled {
  * has run (to allow space for the calendar icon
  */
 input.dp-applied {
-	width: 100px;
 	float: left;
 }

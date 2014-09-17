@@ -99,4 +99,3 @@ $(document).ready(function()
 </script>
 <?php 
 } // end if not is excel export 
-?>

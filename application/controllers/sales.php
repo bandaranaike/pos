@@ -40,6 +40,14 @@ class Sales extends Secure_area {
         $this->sale_lib->set_comment($this->input->post('comment'));
     }
 
+    function set_commission() {
+        $this->sale_lib->set_commission($this->input->post('commission'));
+    }
+
+    function set_check_due_date() {
+        $this->sale_lib->set_check_due_date($this->input->post('check_due_date'));
+    }
+
     function set_email_receipt() {
         $this->sale_lib->set_email_receipt($this->input->post('email_receipt'));
     }
@@ -78,6 +86,11 @@ class Sales extends Secure_area {
             $payment_amount = min($this->sale_lib->get_amount_due(), $this->Giftcard->get_giftcard_value($this->input->post('amount_tendered')));
         } else {
             $payment_amount = $this->input->post('amount_tendered');
+            // Save check due date
+            $check_due_date = $this->sale_lib->get_check_due_date();
+            if ($check_due_date != "" && $payment_type == $this->lang->line('sales_check')) {
+                $this->Sale->save_check_due_date(0, $check_due_date);
+            }
         }
 
         if (!$this->sale_lib->add_payment($payment_type, $payment_amount)) {
@@ -172,6 +185,11 @@ class Sales extends Secure_area {
 
         //SAVE sale to database
         $data['sale_id'] = $this->Sale->save($data['cart'], $customer_id, $employee_id, $comment, $data['payments']);
+
+        // Save commission 
+        $ammount = $this->sale_lib->get_commission();
+        $this->Sale->save_commition($data['sale_id'], $customer_id, $ammount);
+
         if ($data['sale_id'] == '-1') {
             $data['error_message'] = $this->lang->line('sales_transaction_failed');
         } else {
@@ -287,6 +305,7 @@ class Sales extends Secure_area {
         $data['total'] = $this->sale_lib->get_total();
         $data['items_module_allowed'] = $this->Employee->has_permission('items', $person_info->person_id);
         $data['comment'] = $this->sale_lib->get_comment();
+        $data['commission'] = $this->sale_lib->get_commission();
         $data['email_receipt'] = $this->sale_lib->get_email_receipt();
         $data['payments_total'] = $this->sale_lib->get_payments_total();
         $data['amount_due'] = $this->sale_lib->get_amount_due();
@@ -364,10 +383,6 @@ class Sales extends Secure_area {
         $this->sale_lib->copy_entire_suspended_sale($sale_id);
         $this->Sale_suspended->delete($sale_id);
         $this->_reload();
-    }
-
-    function print_bill() {
-        echo "it is comming";
     }
 
 }

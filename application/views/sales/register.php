@@ -229,7 +229,7 @@ if (count($cart) > 0) {
         </tr>
     </table>
     <div id="Payment_Types" >
-        <div style="height:100px;">
+        <div>
             <?php echo form_open("sales/add_payment", array('id' => 'add_payment_form')); ?>
             <table width="100%">
                 <tr>
@@ -248,12 +248,20 @@ if (count($cart) > 0) {
                         <?php echo form_input(array('name' => 'amount_tendered', 'id' => 'amount_tendered', 'value' => to_currency_no_money($amount_due), 'size' => '10')); ?>
                     </td>
                 </tr>
+                <tr id="check_due_date_container">
+                    <td>
+                        <span id="amount_due_date_label">Due Date</span>
+                    </td>
+                    <td>
+                        <?php echo form_input(array('name' => 'check_due_date', 'id' => 'check_due_date', 'value' => $check_due_date, 'size' => '10')); ?>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <span id="amount_commition_label">Commission</span>
                     </td>
                     <td>
-                        <?php echo form_input(array('name' => 'commission', 'id' => 'commission', 'value' => 0, 'size' => '10')); ?>
+                        <?php echo form_input(array('name' => 'commission', 'id' => 'commission', 'value' => $commission, 'size' => '10')); ?>
                     </td>
                 </tr>
             </table>
@@ -305,8 +313,14 @@ if (count($cart) > 0) {
 <div class="clearfix" style="margin-bottom:30px;">&nbsp;</div>
 <?php $this->load->view("partial/footer"); ?>
 <script type="text/javascript" language="javascript">
+
     $(document).ready(function()
     {
+        $(function() {
+            $("#check_due_date").datePicker({
+                button: false
+            });
+        });
         $("#item").autocomplete('<?php echo site_url("sales/item_search"); ?>',
                 {
                     minChars: 0,
@@ -360,6 +374,16 @@ if (count($cart) > 0) {
             $.post('<?php echo site_url("sales/set_comment"); ?>', {comment: $('#comment').val()});
         });
 
+        $('#commission').change(function()
+        {
+            $.post('<?php echo site_url("sales/set_commission"); ?>', {commission: $('#commission').val()});
+        });
+        
+        $('#check_due_date').change(function()
+        {
+            $.post('<?php echo site_url("sales/set_check_due_date"); ?>', {check_due_date: $('#check_due_date').val()});
+        });
+        
         $('#email_receipt').change(function()
         {
             $.post('<?php echo site_url("sales/set_email_receipt"); ?>', {email_receipt: $('#email_receipt').is(':checked') ? '1' : '0'});
@@ -424,9 +448,15 @@ if (count($cart) > 0) {
             $("#amount_tendered_label").html("<?php echo $this->lang->line('sales_giftcard_number'); ?>");
             $("#amount_tendered").val('');
             $("#amount_tendered").focus();
+            $("#check_due_date_container").hide();
         }
         else
         {
+            if ($("#payment_types").val() == "<?php echo $this->lang->line('sales_check'); ?>") {
+                $("#check_due_date_container").show();
+            } else {
+                $("#check_due_date_container").hide();
+            }
             $("#amount_tendered_label").html("<?php echo $this->lang->line('sales_amount_tendered'); ?>");
         }
     }
