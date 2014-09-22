@@ -13,8 +13,9 @@ echo form_open('cheques/save_cheque', array('id' => 'cheque_new_form'));
             echo form_input(array(
                 'name' => 'banking_date',
                 'id' => 'banking_date',
-                'value'=>$cheque->banking_date)
+                'value' => $cheque->banking_date)
             );
+            echo form_hidden('cheque_id', $cheque->cheque_id);
             ?>
         </div>
     </div>
@@ -25,7 +26,7 @@ echo form_open('cheques/save_cheque', array('id' => 'cheque_new_form'));
             echo form_input(array(
                 'name' => 'bank_name',
                 'id' => 'bank_name',
-                'value'=>$cheque->bank)
+                'value' => $cheque->bank)
             );
             ?>
         </div>
@@ -37,7 +38,7 @@ echo form_open('cheques/save_cheque', array('id' => 'cheque_new_form'));
             echo form_input(array(
                 'name' => 'cheque_amount',
                 'id' => 'cheque_amount',
-                'value'=>$cheque->cheque_amount)
+                'value' => $cheque->cheque_amount)
             );
             ?>
         </div>
@@ -49,8 +50,16 @@ echo form_open('cheques/save_cheque', array('id' => 'cheque_new_form'));
             echo form_input(array(
                 'name' => 'cheque_number',
                 'id' => 'cheque_number',
-                'value'=>$cheque->check_number)
+                'value' => $cheque->check_number)
             );
+            ?>
+        </div>
+    </div>
+    <div class="field_row clearfix">	
+        <?php echo form_label('Sale Number:', 'sale_number_lable', array('class' => 'required')); ?>
+        <div class='form_field'>
+            <?php
+            echo form_dropdown('sale_id', $sale_ids, array($cheque->sale_id), 'id = "sale_number"');
             ?>
         </div>
     </div>
@@ -88,16 +97,17 @@ echo form_close();
             wrapper: "li",
             rules:
                     {
-                        company_name: "required",
-                        first_name: "required",
-                        last_name: "required",
-                        email: "email"
+                        sale_id: "required",
+                        cheque_number: "required",
+                        cheque_amount: "required",
+                        banking_date:"required"
                     },
             messages:
                     {
-                        company_name: "<?php echo $this->lang->line('suppliers_company_name_required'); ?>",
-                        last_name: "<?php echo $this->lang->line('common_last_name_required'); ?>",
-                        email: "<?php echo $this->lang->line('common_email_invalid_format'); ?>"
+                        sale_id: "Please select a sale",
+                        cheque_number: "Check number is required",
+                        cheque_amount: "Check amount is required",
+                        banking_date:"Banking date is required"
                     }
         });
     });

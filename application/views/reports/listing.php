@@ -19,6 +19,7 @@
 
         <li><h3><?php echo $this->lang->line('reports_summary_reports'); ?></h3>
             <ul>
+                <a href="listing.php"></a>
                 <li><a href="<?php echo site_url('reports/summary_sales'); ?>"><?php echo $this->lang->line('reports_sales'); ?></a></li>
                 <li><a href="<?php echo site_url('reports/summary_categories'); ?>"><?php echo $this->lang->line('reports_categories'); ?></a></li>
                 <li><a href="<?php echo site_url('reports/summary_customers'); ?>"><?php echo $this->lang->line('reports_customers'); ?></a></li>
@@ -29,6 +30,8 @@
                 <li><a href="<?php echo site_url('reports/summary_discounts'); ?>"><?php echo $this->lang->line('reports_discounts'); ?></a></li>
                 <li><a href="<?php echo site_url('reports/summary_payments'); ?>"><?php echo $this->lang->line('reports_payments'); ?></a></li>
                 <li><a href="<?php echo site_url('cheques'); ?>">Checks</a></li>
+                <li><a href="<?php echo site_url('cheques/incomplete_cheques'); ?>">Incomplete checks</a></li>
+                <li><a href="<?php echo site_url('reports/commissions'); ?>">Commissions</a></li>
             </ul>
         </li>
 

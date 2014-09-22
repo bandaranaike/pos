@@ -165,3 +165,11 @@
     margin: 0 4px 8px 0;
 }
 
+.sale_reg_details{
+    margin: 0 0 5px 0;
+}
+.sale_reg_details label{
+    display: block;
+    float: left;
+    width: 30%;
+}

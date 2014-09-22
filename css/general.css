@@ -158,3 +158,21 @@ html[xmlns] .clearfix {	display: block; }
 #titleTextImg{
     padding: 5px;
 }
+.confim_content{
+    font-size: 1.1em;
+}
+.confim_content p{
+    padding: 5px;
+}
+.confim_content a{
+    margin: 0 10px 10px 0;
+    display: block;
+    float: left;
+    text-align: center;
+}
+.confim_content a:first-child{
+    margin-left: 0;
+}
+.confim_content a div{
+    margin-left: 0;
+}

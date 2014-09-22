@@ -9,7 +9,7 @@
 <table class="tablesorter report" id="sortable_table">
     <thead>
         <tr>
-            <th>ID</th><th>Date</th><th>Due Date</th><th>Number</th><th>Amount</th><th>Action</th>
+            <th>ID</th><th>Date</th><th>Due Date</th><th>Number</th><th>Amount</th><th colspan="2">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +22,7 @@
                     <td><?php echo $cheque->banking_date; ?></td><td><?php echo $cheque->check_number; ?></td>
                     <td><?php echo $cheque->cheque_amount; ?></td>
                     <td><?php echo anchor("cheques/add_new/{$cheque->cheque_id}", "Edit", array('class' => 'thickbox none', 'title' => "Edit")); ?></td>
+                    <td><?php echo anchor("cheques/delete_cheque_confirm/{$cheque->cheque_id}/width:400/height:300/", "Delete", array('class' => 'thickbox none', 'title' => "Delete")); ?></td>
                 </tr>
                 <?php
             }

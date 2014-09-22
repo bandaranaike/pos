@@ -181,13 +181,7 @@ if (isset($success)) {
 // Only show this part if there are Items already in the sale.
 if (count($cart) > 0) {
     ?>
-    <div id="Cancel_sale">
-        <?php echo form_open("sales/cancel_sale", array('id' => 'cancel_sale_form')); ?>
-        <div class='small_button' id='cancel_sale_button' style='margin-top:5px;'>
-            <span><?php echo $this->lang->line('sales_cancel_sale'); ?></span>
-        </div>
-        </form>
-    </div>
+
     <div class="clearfix" style="margin-bottom:1px;">&nbsp;</div>
     <?php
     // Only show this part if there is at least one payment entered.
@@ -195,10 +189,14 @@ if (count($cart) > 0) {
         ?>
         <div id="finish_sale">
             <?php echo form_open("sales/complete", array('id' => 'finish_sale_form')); ?>
-            <label id="comment_label" for="comment"><?php echo $this->lang->line('common_comments'); ?>:</label>
-            <?php echo form_textarea(array('name' => 'comment', 'id' => 'comment', 'value' => $comment, 'rows' => '4', 'cols' => '23')); ?>
-            <br /><br />
-
+            <div class="sale_reg_details">
+                <label id="comment_label" for="comment"><?php echo $this->lang->line('common_comments'); ?>:</label>
+                <?php echo form_textarea(array('name' => 'comment', 'id' => 'comment', 'value' => $comment, 'rows' => '2', 'cols' => '23')); ?>
+            </div>
+            <div class="sale_reg_details">
+                <label id="amount_commition_label">Commission</label>
+                <?php echo form_input(array('name' => 'commission', 'id' => 'commission', 'value' => $commission, 'size' => '10')); ?>
+            </div>
             <?php
             if (!empty($customer_email)) {
                 echo $this->lang->line('sales_email_receipt') . ': ' . form_checkbox(array(
@@ -214,12 +212,20 @@ if (count($cart) > 0) {
             }
             echo "<div class='small_button' id='suspend_sale_button' style='float:right;margin-top:5px;'><span>" . $this->lang->line('sales_suspend_sale') . "</span></div>";
             ?>
+            <div id="Cancel_sale">
+                <?php echo form_open("sales/cancel_sale", array('id' => 'cancel_sale_form')); ?>
+                <div class='small_button' id='cancel_sale_button' style='margin-top:5px;'>
+                    <span><?php echo $this->lang->line('sales_cancel_sale'); ?></span>
+                </div>
+                <?php echo form_close(); ?>
+            </div>
         </div>
         </form>
         <?php
     }
     ?>
-    <table width="100%"><tr>
+    <table width="100%">
+        <tr>
             <td style="width:55%; "><div class="float_left"><?php echo 'Payments Total:' ?></div></td>
             <td style="width:45%; text-align:right;"><div class="float_left" style="text-align:right;font-weight:bold;"><?php echo to_currency($payments_total); ?></div></td>
         </tr>
@@ -254,14 +260,6 @@ if (count($cart) > 0) {
                     </td>
                     <td>
                         <?php echo form_input(array('name' => 'check_due_date', 'id' => 'check_due_date', 'value' => $check_due_date, 'size' => '10')); ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span id="amount_commition_label">Commission</span>
-                    </td>
-                    <td>
-                        <?php echo form_input(array('name' => 'commission', 'id' => 'commission', 'value' => $commission, 'size' => '10')); ?>
                     </td>
                 </tr>
             </table>
@@ -378,12 +376,12 @@ if (count($cart) > 0) {
         {
             $.post('<?php echo site_url("sales/set_commission"); ?>', {commission: $('#commission').val()});
         });
-        
+
         $('#check_due_date').change(function()
         {
             $.post('<?php echo site_url("sales/set_check_due_date"); ?>', {check_due_date: $('#check_due_date').val()});
         });
-        
+
         $('#email_receipt').change(function()
         {
             $.post('<?php echo site_url("sales/set_email_receipt"); ?>', {email_receipt: $('#email_receipt').is(':checked') ? '1' : '0'});

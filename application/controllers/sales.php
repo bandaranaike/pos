@@ -88,8 +88,8 @@ class Sales extends Secure_area {
             $payment_amount = $this->input->post('amount_tendered');
             // Save check due date
             $check_due_date = $this->sale_lib->get_check_due_date();
-            if ($check_due_date != "" && $payment_type == $this->lang->line('sales_check')) {
-                $this->Sale->save_check_due_date(0, $check_due_date);
+            if ($payment_type == $this->lang->line('sales_check') && $payment_amount > 0) {
+                $this->Sale->save_check_due_date($payment_amount, $check_due_date);
             }
         }
 
@@ -309,6 +309,7 @@ class Sales extends Secure_area {
         $data['email_receipt'] = $this->sale_lib->get_email_receipt();
         $data['payments_total'] = $this->sale_lib->get_payments_total();
         $data['amount_due'] = $this->sale_lib->get_amount_due();
+        $data['check_due_date'] = $this->sale_lib->get_check_due_date();
         $data['payments'] = $this->sale_lib->get_payments();
         $data['payment_options'] = array(
             $this->lang->line('sales_cash') => $this->lang->line('sales_cash'),
