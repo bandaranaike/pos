@@ -176,3 +176,15 @@ html[xmlns] .clearfix {	display: block; }
 .confim_content a div{
     margin-left: 0;
 }
+.cheque_list td{
+    background-color: rgba(0,0,0,0) !important;
+}
+.yellow{
+    background: #fff7c1;
+}
+.red{
+    background: #feb7b7;
+}
+.orange{
+    background: #ffd47e;
+}

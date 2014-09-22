@@ -50,5 +50,12 @@ class cheques extends Secure_area {
         $this->chequesm->delte_cheque_by_id($cheque_id);
         $this->incomplete_cheques();
     }
-
+    public function got_payment($cheque_id) {
+        $this->chequesm->cheque_complete($cheque_id);
+        $this->index();
+    }
+    public function complete_cheques() {
+        $data["all_cheque_records"] = $this->chequesm->get_all_complete_cheque_records();
+        $this->load->view("cheques/cheque_complete_list", $data);
+    }
 }

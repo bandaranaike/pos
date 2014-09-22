@@ -14,6 +14,12 @@
 class Chequesm extends CI_Model {
 
     public function get_all_cheque_records() {
+        $this->db->where("cheque_status", 0);
+        return $this->db->get("ospos_cheques");
+    }
+
+    public function get_all_complete_cheque_records() {
+        $this->db->where("cheque_status", 1);
         return $this->db->get("ospos_cheques");
     }
 
@@ -59,9 +65,16 @@ class Chequesm extends CI_Model {
 //        }
         return $sales_ids;
     }
+
     public function delte_cheque_by_id($cheque_id) {
         $this->db->where("cheque_id", $cheque_id);
         $this->db->delete('cheques');
+    }
+
+    public function cheque_complete($cheque_id) {
+        $data = array("cheque_status" => "1");
+        $this->db->where("cheque_id", $cheque_id);
+        $this->db->update('cheques', $data);
     }
 
 }

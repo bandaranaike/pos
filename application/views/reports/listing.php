@@ -60,7 +60,7 @@
     <?php $this->load->view("partial/footer"); ?>
 
     <script type="text/javascript" language="javascript">
-        $(document).ready(function()
+        $(document).ready(function ()
         {
         });
     </script>
