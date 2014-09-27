@@ -209,12 +209,13 @@ class Sale extends CI_Model {
         $this->db->insert("ospos_commission", $data);
     }
 
-    public function save_check_due_date($payment_amount, $save_check_due_date) {
+    public function save_check_due_date($payment_amount, $cheque_due_date) {
+
         $data = array(
             "inserted_date" => date("Y-m-d H:i:s"),
             "sale_id" => 0,
             "cheque_amount" => $payment_amount,
-            "banking_date" => $save_check_due_date ? date("Y-m-d", strtotime($save_check_due_date)) : date("Y-m-d")
+            "banking_date" => $cheque_due_date ? date("Y-m-d", is_numeric($cheque_due_date) ? ($cheque_due_date * 3600 * 24) + time() : strtotime($cheque_due_date)) : date("Y-m-d")
         );
         $this->db->insert("ospos_cheques", $data);
     }

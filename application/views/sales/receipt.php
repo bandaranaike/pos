@@ -20,9 +20,9 @@ if (isset($error_message)) {
                     <td>Salesman</td>
                 </tr>
                 <tr>
-                    <td><?php echo substr($transaction_time,0,10); ?></td>
+                    <td><?php echo substr($transaction_time, 0, 10); ?></td>
                     <td><?php echo $sale_id; ?></td>
-                    <td><?php echo explode(" ",$employee)[0]; ?></td>
+                    <td><?php echo explode(" ", $employee)[0]; ?></td>
                 </tr>
             </tbody>
         </table>
@@ -70,10 +70,10 @@ if (isset($error_message)) {
                 <td colspan="3" style='text-align:right;'><?php echo $this->lang->line('sales_sub_total'); ?></td>
                 <td colspan="2" style='text-align:right;'><?php echo to_currency($subtotal); ?></td>
             </tr>  
-            <!-- <?php //foreach ($taxes as $name => $value) {  ?>
+            <!-- <?php //foreach ($taxes as $name => $value) {   ?>
                 <tr>
-                    <td colspan="3" style='text-align:right;'><?php //echo $name;  ?>:</td>
-                    <td colspan="2" style='text-align:right;'><?php //echo to_currency($value);  ?></td>
+                    <td colspan="3" style='text-align:right;'><?php //echo $name;   ?>:</td>
+                    <td colspan="2" style='text-align:right;'><?php //echo to_currency($value);   ?></td>
                 </tr>
             <?php //} ?> -->
             <tr>
@@ -104,6 +104,16 @@ if (isset($error_message)) {
     <div id="sale_return_policy">
         <?php echo nl2br($this->config->item('return_policy')); ?>
     </div>
+    <div class="signature_container">
+        <div class="received_by_block">
+            <div class="signature_lable">Received By</div>
+            <div class="signature_dot_line">...................................</div>
+        </div>
+        <div class="sold_by_block">
+            <div class="signature_lable">Received By</div>
+            <div class="signature_dot_line">...................................</div>
+        </div>
+    </div>
     <div id='barcode'>
         <?php echo "<img src='index.php/barcode?barcode=$sale_id&text=$sale_id&width=250&height=50' />"; ?>
     </div>
@@ -113,7 +123,7 @@ if (isset($error_message)) {
 if ($this->Appconfig->get('print_after_sale')) {
     ?>
     <script type="text/javascript">
-        $(window).load(function()
+        $(window).load(function ()
         {
             window.print();
         });

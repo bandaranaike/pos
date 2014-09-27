@@ -75,7 +75,6 @@
 
 #sale_return_policy
 {
-    float: left;
     margin: 0 auto;
     text-align: justify;
 }
@@ -91,4 +90,18 @@
 }
 #check_due_date_container{
     display: none;
+}
+.signature_container{
+    overflow: auto;
+    margin: 50px 0;
+    clear: both;
+}
+.received_by_block{
+    float: left;
+}
+.sold_by_block{
+    float: right;
+}
+.signature_dot_line{
+    padding: 15px 0 0;
 }

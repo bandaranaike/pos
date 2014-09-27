@@ -88,7 +88,7 @@ class Sales extends Secure_area {
             $payment_amount = $this->input->post('amount_tendered');
             // Save check due date
             $check_due_date = $this->sale_lib->get_check_due_date();
-            if ($payment_type == $this->lang->line('sales_check') && $payment_amount > 0) {
+            if ($payment_type == $this->lang->line('sales_check') && $payment_amount != 0) {
                 $this->Sale->save_check_due_date($payment_amount, $check_due_date);
             }
         }
