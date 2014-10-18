@@ -75,23 +75,23 @@ echo form_open('cheques/save_cheque', array('id' => 'cheque_new_form'));
 <?php
 echo form_close();
 ?>
-<script type='text/javascript'>
+<script>
 
 //validation and submit handling
-    $(document).ready(function()
+    $(document).ready(function ()
     {
-        $('#supplier_form').validate({
-            submitHandler: function(form)
+        $('#cheque_new_form').validate({
+            submitHandler: function (form)
             {
                 $(form).ajaxSubmit({
-                    success: function(response)
+                    success: function (response)
                     {
                         tb_remove();
                         post_person_form_submit(response);
+                        location.reload();
                     },
                     dataType: 'json'
                 });
-
             },
             errorLabelContainer: "#error_message_box",
             wrapper: "li",
@@ -100,14 +100,14 @@ echo form_close();
                         sale_id: "required",
                         cheque_number: "required",
                         cheque_amount: "required",
-                        banking_date:"required"
+                        banking_date: "required"
                     },
             messages:
                     {
-                        sale_id: "Please select a sale",
+                        sale_id: "Please select a sale number",
                         cheque_number: "Check number is required",
                         cheque_amount: "Check amount is required",
-                        banking_date:"Banking date is required"
+                        banking_date: "Banking date is required"
                     }
         });
     });

@@ -33,8 +33,8 @@ class cheques extends Secure_area {
         $cheque_id = $this->input->post('cheque_id');
         $sale_id = $this->input->post('sale_id');
         $this->chequesm->save_cheque($cheque_id, $banking_date, $bank_name, $cheque_amount, $cheque_number, $sale_id);
-
-        $this->incomplete_cheques();
+        header("location:incomplete_cheques");
+        //$this->incomplete_cheques();
     }
 
     public function incomplete_cheques() {

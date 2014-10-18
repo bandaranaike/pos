@@ -48,7 +48,7 @@ class Chequesm extends CI_Model {
         //SELECT * FROM `ospos_cheques` LEFT JOIN `ospos_sales_payments` ON ospos_sales_payments.sale_id = ospos_cheques.sale_id WHERE ospos_sales_payments.sale_id IS NULL
         $this->db->where("payment_type", "Check");
         $cheque_sales = $this->db->get("sales_payments");
-        $sales_ids = array();
+        $sales_ids = array(""=>"Please select");
         // if (isset($cheque_sales->result_object()) && is_array($cheque_sales->result_object())) {
 
         foreach ($cheque_sales->result_object() as $sales) {

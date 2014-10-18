@@ -106,7 +106,7 @@ if (isset($error_message)) {
     </div>
     <div class="signature_container">
         <div class="received_by_block">
-            <div class="signature_lable">Received By</div>
+            <div class="signature_lable">Sold By</div>
             <div class="signature_dot_line">...................................</div>
         </div>
         <div class="sold_by_block">
